@@ -1,0 +1,14 @@
+{
+  "name": "parity-poe",
+  "version": "0.1.0",
+  "description": "Parity's native order entry protocol",
+  "author": "Jussi Virtanen",
+  "license": "Apache-2.0",
+  "repository": "jvirtanen/node-parity-poe",
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "mocha": "^3"
+  }
+}
