@@ -3,7 +3,7 @@
 const POE = require('./');
 const assert = require('assert');
 
-describe('POE', function() {
+describe('POE', function () {
   const inboundMessages = [
     {
       name: 'Enter Order',
