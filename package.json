@@ -4,7 +4,7 @@
   "description": "Parity's native order entry protocol",
   "author": "Jussi Virtanen",
   "license": "Apache-2.0",
-  "repository": "jvirtanen/node-parity-poe",
+  "repository": "paritytrading/node-parity-poe",
   "scripts": {
     "test": "mocha"
   },
