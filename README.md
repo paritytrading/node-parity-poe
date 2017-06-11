@@ -12,6 +12,15 @@ Download Parity POE:
 npm install parity-poe
 ```
 
+## Links
+
+For more information on Parity PMD:
+
+- Follow [@paritytrading](https://twitter.com/paritytrading) on Twitter for
+  news and announcements
+- Join [paritytrading/chat](https://gitter.im/paritytrading/chat) on Gitter
+  for discussions
+
 ## License
 
 Copyright 2017 Jussi Virtanen.
