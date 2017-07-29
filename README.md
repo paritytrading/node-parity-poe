@@ -4,9 +4,9 @@ Parity POE implements [Parity][]'s native order entry protocol on Node.
 
   [Parity]: https://github.com/paritytrading/parity
 
-## Download
+## Install
 
-Download Parity POE:
+Install Parity POE:
 
 ```
 npm install parity-poe
