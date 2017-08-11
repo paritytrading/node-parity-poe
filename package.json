@@ -1,6 +1,6 @@
 {
   "name": "parity-poe",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Parity's native order entry protocol",
   "author": "Jussi Virtanen",
   "license": "Apache-2.0",
