@@ -14,7 +14,6 @@ export enum OutBoundMessageType {
     ORDER_REJECTED = "R",
     ORDER_EXECUTED = "E",
     ORDER_CANCELED = "X",
-    BROKEN_TRADE = "B",
 }
 
 export enum Side {
