@@ -178,23 +178,6 @@ describe('POE', function () {
         reason: 'R',
       },
     },
-    {
-      name: 'Broken Trade',
-      formatted: [
-        0x42,
-        0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02,
-        0x66, 0x6f, 0x6f, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
-        0x00, 0x00, 0x00, 0x03,
-        0x43,
-      ],
-      parsed: {
-        messageType: 'B',
-        timestamp: 4294967298,
-        orderId: 'foo             ',
-        matchNumber: 3,
-        reason: 'C',
-      },
-    },
   ];
 
   describe('#formatOutbound()', function () {
