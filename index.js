@@ -10,7 +10,6 @@ const OutBoundMessageType = {
   ORDER_REJECTED: 'R',
   ORDER_EXECUTED: 'E',
   ORDER_CANCELED: 'X',
-  BROKEN_TRADE: 'B',
 };
 
 const Side = {
@@ -111,8 +110,6 @@ exports.formatOutbound = (message) => {
       return formatOrderExecuted(message);
     case OutBoundMessageType.ORDER_CANCELED:
       return formatOrderCanceled(message);
-    case OutBoundMessageType.BROKEN_TRADE:
-      return formatBrokenTrade(message);
     default:
       throw new Error('Unknown message type: ' + message.messageType);
   }
@@ -130,8 +127,6 @@ exports.parseOutbound = (buffer) => {
       return parseOrderExecuted(buffer);
     case 0x58:
       return parseOrderCanceled(buffer);
-    case 0x42:
-      return parseBrokenTrade(buffer);
     default:
       throw new Error('Unknown message type: ' + messageType);
   }
@@ -230,28 +225,6 @@ function parseOrderCanceled(buffer) {
     orderId: readString(buffer, 9, 16),
     canceledQuantity: readUInt64BE(buffer, 25),
     reason: readString(buffer, 33, 1),
-  };
-}
-
-function formatBrokenTrade(message) {
-  const buffer = Buffer.allocUnsafe(30);
-
-  buffer.writeUInt8(0x42, 0);
-  writeUInt64BE(buffer, message.timestamp, 1);
-  writeString(buffer, message.orderId, 9, 16);
-  buffer.writeUInt32BE(message.matchNumber, 25);
-  writeString(buffer, message.reason, 29, 1);
-
-  return buffer;
-}
-
-function parseBrokenTrade(buffer) {
-  return {
-    messageType: OutBoundMessageType.BROKEN_TRADE,
-    timestamp: readUInt64BE(buffer, 1),
-    orderId: readString(buffer, 9, 16),
-    matchNumber: buffer.readUInt32BE(25),
-    reason: readString(buffer, 29, 1),
   };
 }
 
