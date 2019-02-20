@@ -16,9 +16,9 @@ describe('POE', function () {
         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02,
       ],
       parsed: {
-        messageType: 'E',
+        messageType: POE.MessageType.ENTER_ORDER,
         orderId: 'foo             ',
-        side: 'B',
+        side: POE.Side.BUY,
         instrument: 'BAR     ',
         quantity: 1,
         price: 2,
@@ -32,7 +32,7 @@ describe('POE', function () {
         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01,
       ],
       parsed: {
-        messageType: 'X',
+        messageType: POE.MessageType.CANCEL_ORDER,
         orderId: 'foo             ',
         quantity: 1,
       },
@@ -62,7 +62,7 @@ describe('POE', function () {
       ];
 
       const parsed = {
-        messageType: 'X',
+        messageType: POE.MessageType.CANCEL_ORDER,
         orderId: 'foo',
         quantity: 1,
       };
@@ -78,7 +78,7 @@ describe('POE', function () {
       ];
 
       const parsed = {
-        messageType: 'X',
+        messageType: POE.MessageType.CANCEL_ORDER,
         orderId: 'foo bar baz quux xyzzy',
         quantity: 1,
       };
@@ -115,10 +115,10 @@ describe('POE', function () {
         0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x06,
       ],
       parsed: {
-        messageType: 'A',
+        messageType: POE.MessageType.ORDER_ACCEPTED,
         timestamp: 4294967298,
         orderId: 'foo             ',
-        side: 'B',
+        side: POE.Side.BUY,
         instrument: 'BAR     ',
         quantity: 3,
         price: 4,
@@ -134,10 +134,10 @@ describe('POE', function () {
         0x49,
       ],
       parsed: {
-        messageType: 'R',
+        messageType: POE.MessageType.ORDER_REJECTED,
         timestamp: 4294967298,
         orderId: 'foo             ',
-        reason: 'I',
+        reason: POE.OrderRejectReason.UNKNOWN_INSTRUMENT,
       },
     },
     {
@@ -152,12 +152,12 @@ describe('POE', function () {
         0x00, 0x00, 0x00, 0x05,
       ],
       parsed: {
-        messageType: 'E',
+        messageType: POE.MessageType.ORDER_EXECUTED,
         timestamp: 4294967298,
         orderId: 'foo             ',
         quantity: 3,
         price: 4,
-        liquidityFlag: 'A',
+        liquidityFlag: POE.LiquidityFlag.ADDED_LIQUIDITY,
         matchNumber: 5,
       },
     },
@@ -171,11 +171,11 @@ describe('POE', function () {
         0x52,
       ],
       parsed: {
-        messageType: 'X',
+        messageType: POE.MessageType.ORDER_CANCELED,
         timestamp: 4294967298,
         orderId: 'foo             ',
         canceledQuantity: 3,
-        reason: 'R',
+        reason: POE.OrderCancelReason.REQUEST,
       },
     },
   ];
