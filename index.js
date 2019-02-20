@@ -5,6 +5,8 @@ const InboundMessageType = {
   CANCEL_ORDER: 'X',
 };
 
+exports.InboundMessageType = InboundMessageType;
+
 const OutboundMessageType = {
   ORDER_ACCEPTED: 'A',
   ORDER_REJECTED: 'R',
@@ -12,10 +14,14 @@ const OutboundMessageType = {
   ORDER_CANCELED: 'X',
 };
 
+exports.OutboundMessageType = OutboundMessageType;
+
 const Side = {
   BUY: 'B',
   SELL: 'S'
 };
+
+exports.Side = Side;
 
 const OrderRejectReason = {
   UNKNOWN_INSTRUMENT: 'I',
@@ -23,15 +29,13 @@ const OrderRejectReason = {
   INVALID_QUANTITY: 'Q',
 };
 
+exports.OrderRejectReason = OrderRejectReason;
+
 const OrderCancelReason = {
   REQUEST: 'R',
   SUPERVISORY: 'S',
 };
 
-exports.Side = Side;
-exports.InboundMessageType = InboundMessageType;
-exports.OutboundMessageType = OutboundMessageType;
-exports.OrderRejectReason = OrderRejectReason;
 exports.OrderCancelReason = OrderCancelReason;
 
 exports.formatInbound = (message) => {
