@@ -4,12 +4,12 @@
 
 import {Buffer} from "node";
 
-export enum InBoundMessageType {
+export enum InboundMessageType {
     ENTER_ORDER = "E",
     CANCEL_ORDER = "X",
 }
 
-export enum OutBoundMessageType {
+export enum OutboundMessageType {
     ORDER_ACCEPTED = "A",
     ORDER_REJECTED = "R",
     ORDER_EXECUTED = "E",
@@ -27,13 +27,13 @@ export enum OrderRejectReason {
     INVALID_QUANTITY = "Q",
 }
 
-export enum OrderCanceledReason {
+export enum OrderCancelReason {
     REQUEST = "R",
     SUPERVISORY = "S",
 }
 
 export interface EnterOrder {
-    messageType: InBoundMessageType.ENTER_ORDER;
+    messageType: InboundMessageType.ENTER_ORDER;
     orderId: string;
     side: Side;
     instrument: string;
@@ -42,7 +42,7 @@ export interface EnterOrder {
 }
 
 export interface CancelOrder {
-    messageType: InBoundMessageType.CANCEL_ORDER;
+    messageType: InboundMessageType.CANCEL_ORDER;
     orderId: string;
     quantity: number;
 }
@@ -53,7 +53,7 @@ export enum LiquidityFlag {
 }
 
 export interface OrderAccepted {
-    messageType: OutBoundMessageType.ORDER_ACCEPTED;
+    messageType: OutboundMessageType.ORDER_ACCEPTED;
     timestamp: number;
     orderId: string;
     side: Side;
@@ -64,14 +64,14 @@ export interface OrderAccepted {
 }
 
 export interface OrderRejected {
-    messageType: OutBoundMessageType.ORDER_REJECTED;
+    messageType: OutboundMessageType.ORDER_REJECTED;
     timestamp: number;
     orderId: string;
     reason: OrderRejectReason;
 }
 
 export interface OrderExecuted {
-    messageType: OutBoundMessageType.ORDER_EXECUTED;
+    messageType: OutboundMessageType.ORDER_EXECUTED;
     timestamp: number;
     orderId: string;
     quantity: number;
@@ -81,11 +81,11 @@ export interface OrderExecuted {
 }
 
 export interface OrderCanceled {
-    messageType: OutBoundMessageType.ORDER_CANCELED;
+    messageType: OutboundMessageType.ORDER_CANCELED;
     timestamp: number;
     orderId: string;
     canceledQuantity: number;
-    reason: OrderCanceledReason
+    reason: OrderCancelReason
 }
 
 /**
