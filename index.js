@@ -26,6 +26,13 @@ const OrderRejectReason = {
 
 exports.OrderRejectReason = OrderRejectReason;
 
+const LiquidityFlag = {
+  ADDED_LIQUIDITY: 'A',
+  REMOVED_LIQUIDITY: 'R',
+};
+
+exports.LiquidityFlag = LiquidityFlag;
+
 const OrderCancelReason = {
   REQUEST: 'R',
   SUPERVISORY: 'S',
