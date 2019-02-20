@@ -13,7 +13,7 @@ exports.MessageType = MessageType;
 
 const Side = {
   BUY: 'B',
-  SELL: 'S'
+  SELL: 'S',
 };
 
 exports.Side = Side;
