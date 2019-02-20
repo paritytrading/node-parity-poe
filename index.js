@@ -1,20 +1,15 @@
 'use strict';
 
-const InboundMessageType = {
+const MessageType = {
   ENTER_ORDER: 'E',
   CANCEL_ORDER: 'X',
-};
-
-exports.InboundMessageType = InboundMessageType;
-
-const OutboundMessageType = {
   ORDER_ACCEPTED: 'A',
   ORDER_REJECTED: 'R',
   ORDER_EXECUTED: 'E',
   ORDER_CANCELED: 'X',
 };
 
-exports.OutboundMessageType = OutboundMessageType;
+exports.MessageType = MessageType;
 
 const Side = {
   BUY: 'B',
@@ -40,9 +35,9 @@ exports.OrderCancelReason = OrderCancelReason;
 
 exports.formatInbound = (message) => {
   switch (message.messageType) {
-    case InboundMessageType.ENTER_ORDER:
+    case MessageType.ENTER_ORDER:
       return formatEnterOrder(message);
-    case InboundMessageType.CANCEL_ORDER:
+    case MessageType.CANCEL_ORDER:
       return formatCancelOrder(message);
     default:
       throw new Error('Unknown message type: ' + message.messageType);
@@ -77,7 +72,7 @@ function formatEnterOrder(message) {
 
 function parseEnterOrder(buffer) {
   return {
-    messageType: InboundMessageType.ENTER_ORDER,
+    messageType: MessageType.ENTER_ORDER,
     orderId: readString(buffer, 1, 16),
     side: readString(buffer, 17, 1),
     instrument: readString(buffer, 18, 8),
@@ -98,7 +93,7 @@ function formatCancelOrder(message) {
 
 function parseCancelOrder(buffer) {
   return {
-    messageType: InboundMessageType.CANCEL_ORDER,
+    messageType: MessageType.CANCEL_ORDER,
     orderId: readString(buffer, 1, 16),
     quantity: readUInt64BE(buffer, 17),
   };
@@ -106,13 +101,13 @@ function parseCancelOrder(buffer) {
 
 exports.formatOutbound = (message) => {
   switch (message.messageType) {
-    case OutboundMessageType.ORDER_ACCEPTED:
+    case MessageType.ORDER_ACCEPTED:
       return formatOrderAccepted(message);
-    case OutboundMessageType.ORDER_REJECTED:
+    case MessageType.ORDER_REJECTED:
       return formatOrderRejected(message);
-    case OutboundMessageType.ORDER_EXECUTED:
+    case MessageType.ORDER_EXECUTED:
       return formatOrderExecuted(message);
-    case OutboundMessageType.ORDER_CANCELED:
+    case MessageType.ORDER_CANCELED:
       return formatOrderCanceled(message);
     default:
       throw new Error('Unknown message type: ' + message.messageType);
@@ -153,7 +148,7 @@ function formatOrderAccepted(message) {
 
 function parseOrderAccepted(buffer) {
   return {
-    messageType: OutboundMessageType.ORDER_ACCEPTED,
+    messageType: MessageType.ORDER_ACCEPTED,
     timestamp: readUInt64BE(buffer, 1),
     orderId: readString(buffer, 9, 16),
     side: readString(buffer, 25, 1),
@@ -177,7 +172,7 @@ function formatOrderRejected(message) {
 
 function parseOrderRejected(buffer) {
   return {
-    messageType: OutboundMessageType.ORDER_REJECTED,
+    messageType: MessageType.ORDER_REJECTED,
     timestamp: readUInt64BE(buffer, 1),
     orderId: readString(buffer, 9, 16),
     reason: readString(buffer, 25, 1),
@@ -200,7 +195,7 @@ function formatOrderExecuted(message) {
 
 function parseOrderExecuted(buffer) {
   return {
-    messageType: OutboundMessageType.ORDER_EXECUTED,
+    messageType: MessageType.ORDER_EXECUTED,
     timestamp: readUInt64BE(buffer, 1),
     orderId: readString(buffer, 9, 16),
     quantity: readUInt64BE(buffer, 25),
@@ -224,7 +219,7 @@ function formatOrderCanceled(message) {
 
 function parseOrderCanceled(buffer) {
   return {
-    messageType: OutboundMessageType.ORDER_CANCELED,
+    messageType: MessageType.ORDER_CANCELED,
     timestamp: readUInt64BE(buffer, 1),
     orderId: readString(buffer, 9, 16),
     canceledQuantity: readUInt64BE(buffer, 25),

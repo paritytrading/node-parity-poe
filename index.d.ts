@@ -4,12 +4,9 @@
 
 import {Buffer} from "node";
 
-export enum InboundMessageType {
+export enum MessageType {
     ENTER_ORDER = "E",
     CANCEL_ORDER = "X",
-}
-
-export enum OutboundMessageType {
     ORDER_ACCEPTED = "A",
     ORDER_REJECTED = "R",
     ORDER_EXECUTED = "E",
@@ -33,7 +30,7 @@ export enum OrderCancelReason {
 }
 
 export interface EnterOrder {
-    messageType: InboundMessageType.ENTER_ORDER;
+    messageType: MessageType.ENTER_ORDER;
     orderId: string;
     side: Side;
     instrument: string;
@@ -42,7 +39,7 @@ export interface EnterOrder {
 }
 
 export interface CancelOrder {
-    messageType: InboundMessageType.CANCEL_ORDER;
+    messageType: MessageType.CANCEL_ORDER;
     orderId: string;
     quantity: number;
 }
@@ -53,7 +50,7 @@ export enum LiquidityFlag {
 }
 
 export interface OrderAccepted {
-    messageType: OutboundMessageType.ORDER_ACCEPTED;
+    messageType: MessageType.ORDER_ACCEPTED;
     timestamp: number;
     orderId: string;
     side: Side;
@@ -64,14 +61,14 @@ export interface OrderAccepted {
 }
 
 export interface OrderRejected {
-    messageType: OutboundMessageType.ORDER_REJECTED;
+    messageType: MessageType.ORDER_REJECTED;
     timestamp: number;
     orderId: string;
     reason: OrderRejectReason;
 }
 
 export interface OrderExecuted {
-    messageType: OutboundMessageType.ORDER_EXECUTED;
+    messageType: MessageType.ORDER_EXECUTED;
     timestamp: number;
     orderId: string;
     quantity: number;
@@ -81,7 +78,7 @@ export interface OrderExecuted {
 }
 
 export interface OrderCanceled {
-    messageType: OutboundMessageType.ORDER_CANCELED;
+    messageType: MessageType.ORDER_CANCELED;
     timestamp: number;
     orderId: string;
     canceledQuantity: number;
