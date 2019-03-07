@@ -9,6 +9,6 @@
     "test": "mocha"
   },
   "devDependencies": {
-    "mocha": "^5"
+    "mocha": "^6"
   }
 }
