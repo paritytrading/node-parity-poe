@@ -11,34 +11,26 @@ const MessageType = {
 
 exports.MessageType = MessageType;
 
-const Side = {
+exports.Side = {
   BUY: 'B',
   SELL: 'S',
 };
 
-exports.Side = Side;
-
-const OrderRejectReason = {
+exports.OrderRejectReason = {
   UNKNOWN_INSTRUMENT: 'I',
   INVALID_PRICE: 'P',
   INVALID_QUANTITY: 'Q',
 };
 
-exports.OrderRejectReason = OrderRejectReason;
-
-const LiquidityFlag = {
+exports.LiquidityFlag = {
   ADDED_LIQUIDITY: 'A',
   REMOVED_LIQUIDITY: 'R',
 };
 
-exports.LiquidityFlag = LiquidityFlag;
-
-const OrderCancelReason = {
+exports.OrderCancelReason = {
   REQUEST: 'R',
   SUPERVISORY: 'S',
 };
-
-exports.OrderCancelReason = OrderCancelReason;
 
 exports.formatInbound = (message) => {
   switch (message.messageType) {
