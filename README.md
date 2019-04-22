@@ -25,8 +25,6 @@ For more information on Parity PMD:
 
 ## License
 
-Copyright 2017 Jussi Virtanen and [contributors][].
-
-  [contributors]: https://github.com/paritytrading/node-parity-poe/graphs/contributors
+Copyright 2017 Parity authors.
 
 Released under the Apache License, Version 2.0. See `LICENSE.txt` for details.
