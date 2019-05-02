@@ -4,7 +4,7 @@ Parity POE implements [Parity][]'s native order entry protocol on Node.
 
   [Parity]: https://github.com/paritytrading/parity
 
-Parity POE requires Node 6 or newer and Parity 0.7.0 or newer.
+Parity POE requires Node 8 or newer and Parity 0.7.0 or newer.
 
 ## Install
 
