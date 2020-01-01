@@ -57,7 +57,7 @@ describe('POE', function () {
   describe('#formatInbound()', function () {
     inboundMessages.forEach((message) => {
       it(`handles ${message.name} message`, function () {
-        assert.deepEqual(POE.formatInbound(message.parsed), Buffer.from(message.formatted));
+        assert.deepStrictEqual(POE.formatInbound(message.parsed), Buffer.from(message.formatted));
       });
     });
 
@@ -82,7 +82,7 @@ describe('POE', function () {
         quantity: 1,
       };
 
-      assert.deepEqual(POE.formatInbound(parsed), Buffer.from(formatted));
+      assert.deepStrictEqual(POE.formatInbound(parsed), Buffer.from(formatted));
     });
 
     it('handles too long string', function () {
@@ -98,14 +98,14 @@ describe('POE', function () {
         quantity: 1,
       };
 
-      assert.deepEqual(POE.formatInbound(parsed), Buffer.from(formatted));
+      assert.deepStrictEqual(POE.formatInbound(parsed), Buffer.from(formatted));
     });
   });
 
   describe('#parseInbound()', function () {
     inboundMessages.forEach((message) => {
       it(`handles ${message.name} message`, function () {
-        assert.deepEqual(POE.parseInbound(Buffer.from(message.formatted)), message.parsed);
+        assert.deepStrictEqual(POE.parseInbound(Buffer.from(message.formatted)), message.parsed);
       });
     });
 
@@ -198,7 +198,7 @@ describe('POE', function () {
   describe('#formatOutbound()', function () {
     outboundMessages.forEach((message) => {
       it(`handles ${message.name} message`, function () {
-        assert.deepEqual(POE.formatOutbound(message.parsed), Buffer.from(message.formatted));
+        assert.deepStrictEqual(POE.formatOutbound(message.parsed), Buffer.from(message.formatted));
       });
     });
 
@@ -227,7 +227,7 @@ describe('POE', function () {
         reason: 'R',
       };
 
-      assert.deepEqual(POE.formatOutbound(parsed), Buffer.from(formatted));
+      assert.deepStrictEqual(POE.formatOutbound(parsed), Buffer.from(formatted));
     });
 
     it('handles too long string', function () {
@@ -247,14 +247,14 @@ describe('POE', function () {
         reason: 'R',
       };
 
-      assert.deepEqual(POE.formatOutbound(parsed), Buffer.from(formatted));
+      assert.deepStrictEqual(POE.formatOutbound(parsed), Buffer.from(formatted));
     });
   });
 
   describe('#parseOutbound()', function () {
     outboundMessages.forEach((message) => {
       it(`handles ${message.name} message`, function () {
-        assert.deepEqual(POE.parseOutbound(Buffer.from(message.formatted)), message.parsed);
+        assert.deepStrictEqual(POE.parseOutbound(Buffer.from(message.formatted)), message.parsed);
       });
     });
 
